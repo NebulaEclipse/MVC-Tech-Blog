@@ -7,18 +7,14 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 require('dotenv').config();
 
 const app = express();
-const host = '0.0.0.0';
 const PORT = process.env.PORT || 3001;
 
+const { User, Blog, Comment } = require("./models");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const sess = {
   secret: process.env.DB_SESSION_SECRET,
-  cookie: {
-
-    maxAge: 0.5 * 60 * 60 * 1000
-  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -36,7 +32,7 @@ app.set('view engine', 'handlebars');
 app.use("/", allRoutes);
 
 sequelize.sync({ force: false }).then(function() {
-  app.listen(PORT, host, function() {
+  app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
 });
