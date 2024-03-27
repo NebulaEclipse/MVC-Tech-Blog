@@ -1,16 +1,13 @@
 const express = require('express');
 const router = express.Router();
-
-const userRoutes = require("./api/userRoutes.js");
-router.use("/api/users",userRoutes)
-
-const blogRoutes = require("./api/blogRoutes");
-router.use("/api/blogs",blogRoutes)
-
-const commentRoutes = require("./api/commentRoutes");
-router.use("/api/comments",commentRoutes)
-
 const frontEnd = require("./frontendRoutes");
+const userRoutes = require("./api/userRoutes.js");
+const blogRoutes = require("./api/blogRoutes");
+const commentRoutes = require("./api/commentRoutes");
+
+router.use("/api/users",userRoutes)
+router.use("/api/blogs",blogRoutes)
+router.use("/api/comments",commentRoutes)
 router.use("/",frontEnd)
 
 router.get("/showsessions",(req,res)=>{

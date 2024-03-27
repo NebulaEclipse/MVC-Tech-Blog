@@ -15,6 +15,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const sess = {
   secret: process.env.DB_SESSION_SECRET,
+  cookie: {
+
+    maxAge: 0.5 * 60 * 60 * 1000
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
