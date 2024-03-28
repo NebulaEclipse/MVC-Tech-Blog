@@ -1,6 +1,6 @@
 var existingBlogs = document.querySelector("#existingblogs")
 var createNew = document.querySelector("#createNew")
-
+var newPost = document.querySelector("#newpost")
 var newBlog = document.querySelector('#newBlog')
 
 function hideCreateNew() {
@@ -9,11 +9,11 @@ function hideCreateNew() {
 
 hideCreateNew();
 
-newBlog.addEventListener("submit",event=>{
+newPost.addEventListener("submit",event=>{
     event.preventDefault()
     console.log('click')
     existingBlogs.hidden=true;
-    newBlog.hidden =true;
+    newPost.hidden =true;
     createNew.hidden =false;
 });
 
